@@ -1,0 +1,73 @@
+{
+  "name": "dzen-rss",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A Node.js library for creating, configuring, and managing an RSS feed for dzen.ru",
+  "keywords": [
+    "zen",
+    "dzen",
+    "xml",
+    "generator",
+    "rss",
+    "feed"
+  ],
+  "main": "./dist/commonjs/index.js",
+  "scripts": {
+    "dev": "npx tsx src/index.ts",
+    "build": "tshy",
+    "clean": "rm -rf dist",
+    "lint:ts": "tsc --noEmit",
+    "eslint": "npx eslint src",
+    "eslint-fix": "npx eslint --fix ./src",
+    "test": "npm run test:vi && npm run lint",
+    "test:vi": "vitest run"
+  },
+  "pre-commit": "lint",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^9.3.0",
+    "@types/node": "^22.13.1",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "@vitest/coverage-v8": "^2.1.3",
+    "eslint": "^8.57.1",
+    "eslint-plugin-n": "^17.11.1",
+    "eslint-plugin-unicorn": "^54.0.0",
+    "esm": "^3.2.25",
+    "ts-node": "^10.9.2",
+    "tshy": "^3.0.2",
+    "tslib": "^2.8.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.0.2"
+  },
+  "tshy": {
+    "exclude": [
+      "**/*.spec.ts",
+      "**/__fixtures__/*",
+      "**/__tests__/*",
+      "**/__snapshots__/*"
+    ],
+    "exports": {
+      ".": "./src/index.ts"
+    }
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    }
+  },
+  "types": "./dist/commonjs/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "dependencies": {
+    "xmlbuilder2": "^3.1.1"
+  }
+}
