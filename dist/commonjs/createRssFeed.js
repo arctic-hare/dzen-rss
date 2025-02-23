@@ -3,11 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = createRssFeed;
 const xmlbuilder2_1 = require("xmlbuilder2");
 function createRssFeed(options, listArticles) {
-    // Создаём корневой элемент RSS
     const rssDocument = (0, xmlbuilder2_1.create)({ encoding: 'utf8' }).ele('rss', {
-        version: '2.0', // Атрибут version
+        version: '2.0',
     });
-    // Добавляем пространства имён
     rssDocument.att('xmlns:content', 'http://purl.org/rss/1.0/modules/content/');
     rssDocument.att('xmlns:dc', 'http://purl.org/dc/elements/1.1/');
     rssDocument.att('xmlns:media', 'http://search.yahoo.com/mrss/');
@@ -47,7 +45,6 @@ function createRssFeed(options, listArticles) {
             item.ele('content:encoded').dat(article.content_encoded).up();
         }
     }
-    // Генерируем XML
     const xml = rssDocument.end({ prettyPrint: true });
     // console.log('Generated XML:', xml);
     return xml;
