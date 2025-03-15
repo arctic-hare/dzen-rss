@@ -27,7 +27,7 @@ export default function createRssFeed(options: RssOptions, listArticles: Article
       item.ele('pdalink').txt(article.pdalink).up();
     }
     item.ele('guid').txt(String(article.guid)).up();
-    item.ele('pubDate').txt(article.pubDate).up();
+    item.ele('pubDate').txt(article.pubDate instanceof Date ? article.pubDate.toUTCString() : article.pubDate).up();
 
     if (article.enclosure) {
       for (const enclosure of article.enclosure) {
@@ -52,7 +52,5 @@ export default function createRssFeed(options: RssOptions, listArticles: Article
     }
   }
 
-  const xml = rssDocument.end({ prettyPrint: true });
-  // console.log('Generated XML:', xml);
-  return xml;
+  return rssDocument.end({ prettyPrint: true });
 }

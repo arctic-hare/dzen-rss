@@ -15,7 +15,7 @@ export interface Article {
   title: string; // Заголовок статьи
   category: Category; // Настройки публикации
   guid: number | string; // Id
-  pubDate: string; // Дата публикации
+  pubDate: Date | string; // Дата публикации
   enclosure?: Enclosure[]; // Ссылка на картинку
   content_encoded: string; // Контент статьи в html
   link: string; // Ссылка на статью

@@ -1,6 +1,6 @@
 {
   "name": "dzen-rss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A Node.js library for creating, configuring, and managing an RSS feed for dzen.ru",
   "keywords": [
@@ -20,7 +20,8 @@
     "eslint": "npx eslint src",
     "eslint-fix": "npx eslint --fix ./src",
     "test": "npm run test:vi && npm run lint",
-    "test:vi": "vitest run"
+    "test:vi": "vitest run",
+    "prepare": "npm run build"
   },
   "pre-commit": "lint",
   "author": "",

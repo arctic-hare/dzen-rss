@@ -56,7 +56,8 @@ const itemParameters: DataTemplate = {
   },
   pubDate: {
     required: true,
-    type: 'string',
+    validator: (value) => value instanceof Date || typeof value === 'number',
+    errorMessage: '"pubDate" must be a Date or a string',
   },
   enclosure: {
     required: false,
