@@ -1,3 +1,4 @@
+import { type Article, type RssOptions } from '../types/index.js';
 interface ParameterDefinition {
   required: boolean;
   type?: string;
@@ -9,9 +10,7 @@ interface DataTemplate {
   [key: string]: ParameterDefinition;
 }
 
-interface Data {
-  [key: string]: unknown;
-}
+type Data = RssOptions | Article;
 
 const xmlOptions: DataTemplate = {
   title: {
@@ -56,7 +55,7 @@ const itemParameters: DataTemplate = {
   },
   pubDate: {
     required: true,
-    validator: (value) => value instanceof Date || typeof value === 'number',
+    validator: (value) => value instanceof Date || typeof value === 'string',
     errorMessage: '"pubDate" must be a Date or a string',
   },
   enclosure: {
@@ -101,9 +100,10 @@ const checkData = (data: Data, dataTemplate: DataTemplate): boolean => {
   }
 
   for (const parameter in data) {
-    if (dataTemplate[parameter].validator && !dataTemplate[parameter].validator(data[parameter])) {
+    const key = parameter as keyof Data;
+    if (dataTemplate[parameter].validator && !dataTemplate[parameter].validator(data[key])) {
       throw new TypeError(dataTemplate[parameter].errorMessage);
-    } else if (dataTemplate[parameter].type && typeof data[parameter] !== dataTemplate[parameter].type) {
+    } else if (dataTemplate[parameter].type && typeof data[key] !== dataTemplate[parameter].type) {
       throw new TypeError(`${parameter} must be of type ${dataTemplate[parameter].type}.`);
     }
   }
@@ -111,7 +111,7 @@ const checkData = (data: Data, dataTemplate: DataTemplate): boolean => {
   return true;
 };
 
-const checkXmlOptions = (data: Data): boolean => checkData(data, xmlOptions);
-const checkItemParameters = (data: Data[]): boolean => data.every((item: Data) => checkData(item, itemParameters));
+const checkXmlOptions = (data: RssOptions): boolean => checkData(data, xmlOptions);
+const checkItemParameters = (data: Article[]): boolean => data.every((item: Data) => checkData(item, itemParameters));
 
 export { checkXmlOptions, checkItemParameters } ;

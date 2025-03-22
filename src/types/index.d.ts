@@ -21,12 +21,10 @@ export interface Article {
   link: string; // Ссылка на статью
   pdalink?: string; // Ссылка на мобильную версию статьи
   description?: string; // Описание в ленте
-  [key: string]: string | number | boolean | object | null | Array<unknown>;
 }
 
 export interface RssOptions {
   title: string;
   link: string;
   language: string;
-  [key: string]: string | number | boolean | object | null | Array<unknown>;
 }
