@@ -1,6 +1,6 @@
 {
   "name": "dzen-rss",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "A Node.js library for creating, configuring, and managing an RSS feed for dzen.ru",
   "keywords": [
@@ -12,7 +12,10 @@
     "feed"
   ],
   "main": "./dist/commonjs/index.js",
-  "repository": "https://github.com/arctic-hare/dzen-rss",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arctic-hare/dzen-rss.git"
+  },
   "scripts": {
     "dev": "npx tsx src/index.ts",
     "build": "tshy",

@@ -4,7 +4,7 @@
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D%2014.0.0-brightgreen)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-blue)](https://www.typescriptlang.org/)
 
-A [Node.js](https://nodejs.org/) library for creating, configuring, and managing an RSS feed for [Dzen](https://dzen.ru/).
+A [Node.js](https://nodejs.org/) library for creating, configuring, and managing an RSS feed for [Dzen](https://dzen.ru/) in accordance with [the official documentation](https://dzen.ru/help/ru/website/rss-modify).
 
 ## Features
 
@@ -44,14 +44,13 @@ const articles = [
     title: 'Article 1',
     link: 'https://example.com/article1',
     guid: '12345',
-    pubDate: '2023-10-01',
+    pubDate: '2023-10-01', // or new Date('2023-10-01')
     category: ['news', 'tech'],
     content_encoded: 'This is the content of article 1.',
   },
 ];
 
 const rssFeed = createRssFeed(options, articles);
-console.log(rssFeed);
 ```
 ### Output
 
