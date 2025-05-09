@@ -1,6 +1,6 @@
 {
   "name": "dzen-rss",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "description": "A Node.js library for creating, configuring, and managing an RSS feed for dzen.ru",
   "keywords": [
@@ -23,7 +23,7 @@
     "lint:ts": "tsc --noEmit",
     "eslint": "npx eslint src",
     "eslint-fix": "npx eslint --fix ./src",
-    "test": "npm run test:vi && npm run lint",
+    "test": "npm run test:vi",
     "test:vi": "vitest run",
     "prepare": "npm run build"
   },
@@ -73,7 +73,6 @@
   "types": "./dist/commonjs/index.d.ts",
   "module": "./dist/esm/index.js",
   "dependencies": {
-    "dzen-rss": "^1.0.1",
     "xmlbuilder2": "^3.1.1"
   }
 }

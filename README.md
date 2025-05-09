@@ -45,7 +45,7 @@ const articles = [
     link: 'https://example.com/article1',
     guid: '12345',
     pubDate: '2023-10-01', // or new Date('2023-10-01')
-    category: ['news', 'tech'],
+    category: ['native-draft', 'noindex', 'comment-all'],
     content_encoded: 'This is the content of article 1.',
   },
 ];
@@ -65,8 +65,9 @@ const rssFeed = createRssFeed(options, articles);
       <link>https://example.com/article1</link>
       <guid>12345</guid>
       <pubDate>2023-10-01</pubDate>
-      <category>news</category>
-      <category>tech</category>
+      <category>native-draft</category>
+      <category>noindex</category>
+      <category>comment-all</category>
       <content:encoded>This is the content of article 1.</content:encoded>
     </item>
   </channel>
